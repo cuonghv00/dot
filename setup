@@ -1,0 +1,24 @@
+#!/bin/sh
+set -e
+
+# [ ! -f ~/.bashrc ] && mv $HOME/.bashrc .bashrc.bak
+
+#!/bin/bash
+
+if [ "$1" = "home" ]; then
+  ln -sf "$PWD/bashrc_home" "$HOME/.bashrc"
+elif [ "$1" = "work" ]; then
+  ln -sf "$PWD/bashrc_work" "$HOME/.bashrc"
+else
+  echo "Usage: $0 [home | work]"
+  exit 1
+fi
+
+export PATH=$PATH:~/.local/bin
+
+ln -sf "$PWD/scripts" "$HOME/scripts"
+
+for i in alacritty tmux k9s vim ; do
+  cd $i && ./setup
+  cd -
+done
