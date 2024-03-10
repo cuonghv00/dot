@@ -18,7 +18,7 @@ export PATH=$PATH:~/.local/bin
 
 ln -sf "$PWD/scripts" "$HOME/scripts"
 
-for i in alacritty tmux k9s vim ; do
-  cd $i && ./setup
-  cd -
-done
+# for i in alacritty tmux k9s vim ; do
+#   cd $i && ./setup
+#   cd -
+# done

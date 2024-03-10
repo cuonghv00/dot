@@ -1,5 +1,5 @@
 # .bashrc
-# --------------------------- fedora default --------------------------
+# --------------------------- default --------------------------
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -11,9 +11,6 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
-
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
 
 # User specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
@@ -36,19 +33,14 @@ function parse_git_branch {
 export PS1="\n\t \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 # ----------------------- environment variables ----------------------
 export TZ=Asia/Ho_Chi_Minh
-export DOTFILES="$HOME/fedora-config/dot"
-export SCRIPTS="$HOME/fedora-config/scripts"
+export DOTFILES="$HOME/dot"
+export SCRIPTS="$HOME/scripts"
 export EDITOR=vi
 export VISUAL=vi
 
-## --vds--
-export VDS_HOME="$HOME/work"
-export CICD="$VDS_HOME/cicd"
-export APP_CONFIG="$VDS_HOME/app-config"
-export ARGOCD="$VDS_HOME/argo-cd"
-export BUILD="$VDS_HOME/build"
 ## config home
 export CONFIG_HOME="$HOME/.config"
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # ------------------------------ cdpath ------------------------------
 export CDPATH=".:$VDS_HOME:$DOTFILES:$SCRIPTS"
@@ -79,32 +71,6 @@ alias more="less"
 alias ssh="TERM=xterm-256color $(which ssh)"
 
 _have vim && alias vi=vim
-# route
-
-alias frzz="sudo ~/script/route.sh >/dev/null 2>&1"
-
-# vault
-alias vault65="ssh -fnL 8205:10.255.133.65:8205 -o ServerAliveInterval=30 vds-ops-vault65 -N"
-alias vault66="ssh -fnL 8206:10.255.133.66:8205 -o ServerAliveInterval=30 vds-ops-vault66 -N"
-alias vault67="ssh -fnL 8207:10.255.133.67:8205 -o ServerAliveInterval=30 vds-ops-vault67 -N"
-
-# k8s management
-alias kapp="ssh -fnL 1443:127.0.0.1:6443 -o ServerAliveInterval=30 prod-app-102555693 -N"
-alias kapp2="ssh -fnL 2443:127.0.0.1:6443 -o ServerAliveInterval=30 vds-prod-z5-16 -N"
-alias kapp3="ssh -fnL 3443:127.0.0.1:6443 -o ServerAliveInterval=30 prod-app3-01 -N"
-alias kapp4="ssh -fnL 4443:127.0.0.1:6443 -o ServerAliveInterval=30 prod-app4-02 -N"
-alias kdr="ssh -fnL 5443:127.0.0.1:6443 -o ServerAliveInterval=30 prod-dr-1025413798 -N"
-alias kcore="ssh -fnL 8443:127.0.0.1:6443 -o ServerAliveInterval=30 prod-core-01 -N"
-alias kgw="ssh -fnL 16443:127.0.0.1:6443 -o ServerAliveInterval=30 vds-prod-z1-11 -N"
-alias kgw4="ssh -fnL 17443:127.0.0.1:6443 -o ServerAliveInterval=30 prod-gw4-03 -N"
-alias kkong1="ssh -fnL 18443:127.0.0.1:6443 -o ServerAliveInterval=30 kong1-107 -N"
-alias kkong2="ssh -fnL 19443:127.0.0.1:6443 -o ServerAliveInterval=30 kong2-115 -N"
-alias kkong6="ssh -fnL 20443:127.0.0.1:6443 -o ServerAliveInterval=30 kong6-30 -N"
-alias kstg="ssh -fnL 30443:127.0.0.1:6443 -o ServerAliveInterval=30 staging-01 -N"
-alias kops2="ssh -fnL 31443:127.0.0.1:6443 -o ServerAliveInterval=30 pl-ops-01 -N"
-alias kkdqt="ssh -fnL 32443:127.0.0.1:6443 -o ServerAliveInterval=30 kdqt-dev-01 -N"
-alias ketc="ssh -fnL 33443:127.0.0.1:6443 -o ServerAliveInterval=30 vds-prod-z5-01 -N"
-alias kepass="ssh -fnL 34443:127.0.0.1:6443 -o ServerAliveInterval=30 prod-epass-110 -N"
 
 # KUBECTL
 alias k=kubectl
