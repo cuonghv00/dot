@@ -50,7 +50,7 @@ export CDPATH=".:$VDS_HOME:$DOTFILES:$SCRIPTS"
 
 alias ll="ls -l"
 alias ls="eza --icons -l -T -L=1"
-alias cat="bat"
+alias cat="batcat"
 alias ip='ip -c'
 alias dot='cd $DOTFILES'
 alias vsc='code .'
