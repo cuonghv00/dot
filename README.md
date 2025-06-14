@@ -43,7 +43,7 @@ bash bootstrap/setup.sh
 ### 2. Install development tools
 
 ```bash
-bash bootstrap/install-devtools.sh
+bash bootstrap/install_devtools.sh
 ```
 
 > Includes: VirtualBox, Vagrant, Docker, kubectl, Minikube, k9s, VSCode, Firefox.

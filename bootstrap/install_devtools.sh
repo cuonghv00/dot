@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# bootstrap/install-devtools.sh - Install development tools on Ubuntu (KDE-based)
+# bootstrap/install_devtools.sh - Install development tools on Ubuntu (KDE-based)
 
 set -e
 
