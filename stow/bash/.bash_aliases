@@ -37,7 +37,7 @@ alias c='printf "\e[H\e[2J"'
 alias more="less"
 alias ssh="TERM=xterm-256color ssh"
 
-_have vim && alias vi=vim
+command -v vim >/dev/null && alias vi=vim
 
 # ssh tunnel
 # alias <alias_name>="ssh -fnL <local_listen_port>:<localhost_or_remoteIP>:{remote_listen_port} -o ServerAliveInterval=30 <jump_proxy> -N"
