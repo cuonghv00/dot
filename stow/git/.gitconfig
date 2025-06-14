@@ -1,0 +1,13 @@
+# ~/.gitconfig
+[user]
+    name = cuonghv00
+    email = cuonghv00@gmail.com
+[core]
+    editor = nvim
+[color]
+    ui = auto
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status

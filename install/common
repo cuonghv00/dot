@@ -1,3 +1,0 @@
-#!/bin/sh
-sudo apt update -y
-sudo apt install git vim git make gawk tmux bat -y

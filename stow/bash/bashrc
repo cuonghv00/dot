@@ -1,27 +1,4 @@
-# .bashrc
-# --------------------------- default --------------------------
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
-fi
-
-# User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-export PATH
-
-# User specific aliases and functions
-if [ -d ~/.bashrc.d ]; then
-    for rc in ~/.bashrc.d/*; do
-        if [ -f "$rc" ]; then
-            . "$rc"
-        fi
-    done
-fi
-unset rc
-
+#!/bin/bash
 # --------------------------- smart prompt ---------------------------
 function parse_git_dirty {
   [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
@@ -33,14 +10,19 @@ function parse_git_branch {
 export PS1="\n\t \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 # ----------------------- environment variables ----------------------
 export TZ=Asia/Ho_Chi_Minh
-export DOTFILES="$HOME/dot"
-export SCRIPTS="$HOME/scripts"
+export DOTFILES="$HOME/fedora-config/dot"
+export SCRIPTS="$HOME/fedora-config/scripts"
 export EDITOR=vi
 export VISUAL=vi
 
+## --vds--
+export VDS_HOME="$HOME/work"
+export CICD="$VDS_HOME/cicd"
+export APP_CONFIG="$VDS_HOME/app-config"
+export ARGOCD="$VDS_HOME/argo-cd"
+export BUILD="$VDS_HOME/build"
 ## config home
 export CONFIG_HOME="$HOME/.config"
-export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # ------------------------------ cdpath ------------------------------
 export CDPATH=".:$VDS_HOME:$DOTFILES:$SCRIPTS"
@@ -50,15 +32,8 @@ export CDPATH=".:$VDS_HOME:$DOTFILES:$SCRIPTS"
 
 alias ll="ls -l"
 alias ls="eza --icons -l -T -L=1"
-alias cat="batcat"
+alias cat="bat"
 alias ip='ip -c'
-alias dot='cd $DOTFILES'
-alias vsc='code .'
-alias vsdot='code $DOTFILES'
-alias cicd='code $CICD'
-alias argo='code $ARGOCD'
-alias appconfig='code $APP_CONFIG'
-alias scripts='cd $SCRIPTS'
 alias free='free -h'
 alias tree='tree -a'
 alias df='df -h'
@@ -68,11 +43,14 @@ alias view='vi -R' # which is usually linked to vim
 alias clear='printf "\e[H\e[2J"'
 alias c='printf "\e[H\e[2J"'
 alias more="less"
-alias ssh="TERM=xterm-256color $(which ssh)"
+alias ssh="TERM=xterm-256color ssh"
 
 _have vim && alias vi=vim
 
-# KUBECTL
+# ssh tunnel
+# alias <alias_name>="ssh -fnL <local_listen_port>:<localhost_or_remoteIP>:{remote_listen_port} -o ServerAliveInterval=30 <jump_proxy> -N"
+
+# ------------------------------ kubectl -----------------------------
 alias k=kubectl
 alias kaf='kubectl apply -f'
 alias keti='kubectl exec -t -i'
@@ -81,6 +59,7 @@ alias kdelf='kubectl delete -f'
 alias kcuc='kubectl config use-context' # quickly to switch contexts
 alias kcgc='kubectl config get-contexts' # list all contexts
 alias kpf="kubectl port-forward" # Port forwarding
+alias kcp='kubectl cp'
 
 # Logs
 alias kl='kubectl logs'
@@ -91,9 +70,6 @@ alias klf='kubectl logs -f'
 alias klf1h='kubectl logs --since 1h -f'
 alias klf1m='kubectl logs --since 1m -f'
 alias klf1s='kubectl logs --since 1s -f'
-
-# File copy
-alias kcp='kubectl cp'
 
 # Pod management.
 alias kgp='kubectl get pods'
@@ -203,7 +179,7 @@ alias kej='kubectl edit job'
 alias kdj='kubectl describe job'
 alias kdelj='kubectl delete job'
 
-# GIT
+# ------------------------------ git -----------------------------
 alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
@@ -217,17 +193,3 @@ alias gl='git pull'
 alias gp='git push'
 alias gpd='git push --dry-run'
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
-
-# ----------------------------- function ----------------------------
-
-function decode() {
-    echo -n "$1" | base64 -d
-}
-function encode() {
-    echo -n "$1" | base64
-}
-
-
-. "$HOME/.cargo/env"
-complete -C pomo pomo
-source ~/.local/share/blesh/ble.sh
