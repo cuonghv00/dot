@@ -1,8 +1,5 @@
 #!/bin/sh
-if ! type tmux >/dev/null 2>&1; then
-  echo "TMUX isn't installed. Skipping."
-  exit 1
-fi
+command -v tmux >/dev/null 2>&1 || { echo "TMUX isn't installed. Skipping."; exit 1; }
 [ ! -d "$HOME/.tmux/" ] && mkdir $HOME/.tmux/
 [ ! -d "$HOME/.tmux/plugins" ] && mkdir $HOME/.tmux/plugins
 [ ! -d "$HOME/.tmux/plugins/tpm" ] && mkdir $HOME/.tmux/plugins/tpm
