@@ -172,6 +172,7 @@ alias kdelj='kubectl delete job'
 
 # ------------------------------ git -----------------------------
 alias g='git'
+alias gst='git status'
 alias ga='git add'
 alias gaa='git add --all'
 alias gb='git branch'
