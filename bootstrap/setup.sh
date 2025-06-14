@@ -17,7 +17,8 @@ function backup_and_stow() {
       fi
     done
 
-    stow -d "$DOTFILES_DIR/stow" -t "$HOME" "$pkg"
+    stow --no-folding -d "$DOTFILES_DIR/stow" -t "$HOME" "$pkg"
+
   done
 }
 
@@ -65,7 +66,7 @@ function main() {
   backup_and_stow
   # install_starship
   # configure_fcitx5
-  change_default_shell
+  # change_default_shell
   echo "[✔] Setup complete! Please log out and log back in to apply fcitx5 and dotfiles configuration."
 }
 

@@ -1,0 +1,6 @@
+source ~/.config/zsh/env.zsh
+source ~/.config/zsh/completion.zsh
+source ~/.config/zsh/alias.zsh
+source ~/.config/zsh/plugins.zsh
+
+eval "$(starship init zsh)"

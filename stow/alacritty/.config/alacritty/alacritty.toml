@@ -8,26 +8,33 @@ unfocused_hollow = true
 hide_when_typing = true
 
 [shell]
-program = "/usr/bin/zsh"
+program = "/usr/bin/tmux"
 
 [window]
-opacity = 0.90
-decorations = "none"
+opacity = 0.9
+decorations = "buttonless"
 
 [window.dimensions]
-columns = 0
-lines = 0
+columns = 120
+lines = 35
 
 [window.padding]
-x = 7
-y = 0
-
-[font.normal]
-family = "UbuntuMono Nerd Font"
+x = 10
+y = 5
 
 [font]
 size = 14
 
+[font.normal]
+family = "UbuntuMono Nerd Font"
+
 [selection]
 save_to_clipboard = true
 
+# Optional performance tuning
+[scrolling]
+history = 10000
+multiplier = 3
+
+[env]
+TERM = "xterm-256color"
