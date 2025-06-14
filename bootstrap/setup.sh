@@ -4,10 +4,19 @@ set -euo pipefail
 DOTFILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 STOW_PACKAGES=(alacritty bash tmux zsh)
 
-function install_stow_packages() {
-  echo "[+] Installing configuration with stow..."
+function backup_and_stow() {
   for pkg in "${STOW_PACKAGES[@]}"; do
-    echo "  -> $pkg"
+    echo "[*] Processing package: $pkg"
+    find "$DOTFILES_DIR/stow/$pkg" -type f -print0 | while IFS= read -r -d '' file; do
+      rel_path="${file#"$DOTFILES_DIR"/stow/"$pkg"/}"
+      target="$HOME/$rel_path"
+
+      if [ -f "$target" ] && [ ! -L "$target" ]; then
+        echo "    -> Backing up existing file: $target"
+        mv "$target" "$target.bak"
+      fi
+    done
+
     stow -d "$DOTFILES_DIR/stow" -t "$HOME" "$pkg"
   done
 }
@@ -53,7 +62,7 @@ function install_ubuntumono_nerd_font() {
 function main() {
   # install_dependencies
   # install_ubuntumono_nerd_font
-  install_stow_packages
+  backup_and_stow
   # install_starship
   # configure_fcitx5
   change_default_shell
