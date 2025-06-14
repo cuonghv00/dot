@@ -21,7 +21,8 @@ cd $dir/alacritty
 
 cargo build --release --no-default-features --features=wayland
 
-# mkdir -p is not POSIX compliant
+# The -p option of mkdir is POSIX compliant; these checks avoid creating
+# directories unnecessarily.
 [ ! -d ~/.local ] && mkdir ~/.local
 [ ! -d ~/.local/bin ] && mkdir ~/.local/bin
 
