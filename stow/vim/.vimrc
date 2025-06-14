@@ -1,97 +1,34 @@
-" designed for vim 8+
+" ~/.vimrc - Minimal Vim config
 
-if has("eval")                               " vim-tiny lacks 'eval'
-  let skip_defaults_vim = 1
-endif
+" General settings
+set nocompatible              " Disable Vi compatibility
+set number                    " Show line numbers
+set relativenumber            " Show relative line numbers
+set cursorline                " Highlight current line
+set showcmd                   " Show incomplete cmds
+set mouse=a                   " Enable mouse
+set clipboard=unnamedplus     " Use system clipboard
 
-set nocompatible
+" Indentation
+set tabstop=2                 " Number of spaces a <Tab> counts for
+set shiftwidth=2              " Spaces per indent level
+set expandtab                 " Convert tabs to spaces
+set smartindent               " Smart indentation
 
-"####################### Vi Compatible (~/.exrc) #######################
+" Search
+set ignorecase                " Case insensitive
+set smartcase                 " ...unless uppercase used
+set incsearch                 " Incremental search
+set hlsearch                  " Highlight matches
 
-" automatically indent new lines
-set autoindent " (alpine)
+" Appearance
+syntax on                     " Enable syntax highlighting
+set background=dark           " Dark theme
+colorscheme desert            " You can change this to: slate, elflord, etc.
 
-set noflash " (alpine-ish only)
+" Better command-line completion
+set wildmenu
+set wildmode=longest:full,full
 
-" replace tabs with spaces automatically
-set expandtab " (alpine)
-
-" number of spaces to replace a tab with when expandtab
-set tabstop=2 " (alpine)
-
-" use case when searching
-set noignorecase
-
-" automatically write files when changing when multiple files open
-set autowrite
-
-" deactivate line numbers
-set nonumber
-
-" turn col and row position on in bottom right
-set ruler " see ruf for formatting
-
-" show command and insert mode
-set showmode
-
-"#######################################################################
-
-" disable visual bell (also disable in .inputrc)
-set t_vb=
-
-let mapleader=","
-
-set softtabstop=2
-
-" mostly used with >> and <<
-set shiftwidth=2
-
-set smartindent
-
-set smarttab
-
-if v:version >= 800
-  " stop vim from silently messing with files that it shouldn't
-  set nofixendofline
-
-  " better ascii friendly listchars
-  set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
-
-  " i hate automatic folding
-  set foldmethod=manual
-  set nofoldenable
-endif
-
-" mark trailing spaces as errors
-match IncSearch '\s\+$'
-
-" enough for line numbers + gutter within 80 standard
-set textwidth=72
-"set colorcolumn=73
-
-" disable relative line numbers, remove no to sample it
-set norelativenumber
-
-" makes ~ effectively invisible
-"highlight NonText guifg=bg
-
-" turn on default spell checking
-"set spell
-
-" disable spellcapcheck
-set spc=
-
-" more risky, but cleaner
-set nobackup
-set noswapfile
-set nowritebackup
-
-set icon
-
-" center the cursor always on the screen
-"set scrolloff=999
-
-" highlight search hits
-set hlsearch
-set incsearch
-set linebreak
+" Save undo history
+set undofile

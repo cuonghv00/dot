@@ -1,0 +1,72 @@
+# ~/.config/starship.toml
+
+# Don't add a blank line before the prompt
+add_newline = false
+
+# Prompt character
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[✗](bold red)"
+
+
+# Show user and host if over SSH
+[username]
+show_always = false
+style_user = "cyan bold"
+style_root = "red bold"
+
+[hostname]
+ssh_only = true
+style = "dimmed white"
+
+# Show full directory path but truncate home to ~
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+home_symbol = "~"
+read_only = " 🔒"
+style = "bold blue"
+
+# Git branch and status
+[git_branch]
+symbol = "🌱 "
+style = "bold purple"
+
+[git_status]
+style = "yellow"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+conflicted = "⚠️"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+modified = "✚"
+untracked = "?"
+staged = "+"
+
+# Show duration of previous command if > 1s
+[cmd_duration]
+min_time = 1000
+format = "⏱ [$duration](yellow)"
+
+# Python version if in venv
+[python]
+symbol = "🐍 "
+style = "blue"
+format = "[$symbol$version]($style) "
+
+# Node.js
+[nodejs]
+symbol = "⬢ "
+style = "green"
+format = "[$symbol$version]($style) "
+
+# Package version if package.json exists
+[package]
+symbol = "📦 "
+style = "dimmed white"
+
+# Time (optional)
+[time]
+disabled = false
+format = "🕒 [$time]($style) "
+time_format = "%H:%M"
+style = "bright-black"

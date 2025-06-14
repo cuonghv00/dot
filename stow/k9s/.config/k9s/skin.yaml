@@ -1,0 +1,12 @@
+k9s:
+  body:
+    fgColor: "#cdd6f4"
+    bgColor: "#1e1e2e"
+  info:
+    sectionColor: "#f5e0dc"
+  views:
+    table:
+      header:
+        fgColor: "#b4befe"
+        bgColor: "#1e1e2e"
+        attr: "bold"

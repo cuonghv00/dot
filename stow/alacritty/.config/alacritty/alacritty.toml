@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/themes/themes/google.toml"]
+import = ["~/.config/alacritty/themes/google.toml"]
 
 [cursor]
 style = "Block"

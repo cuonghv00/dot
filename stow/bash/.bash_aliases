@@ -1,31 +1,23 @@
 #!/bin/bash
-# --------------------------- smart prompt ---------------------------
-function parse_git_dirty {
-  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
-}
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
-}
+# # --------------------------- smart prompt ---------------------------
+# function parse_git_dirty {
+#   [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
+# }
+# function parse_git_branch {
+#   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
+# }
 
-export PS1="\n\t \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
-# ----------------------- environment variables ----------------------
-export TZ=Asia/Ho_Chi_Minh
-export DOTFILES="$HOME/fedora-config/dot"
-export SCRIPTS="$HOME/fedora-config/scripts"
-export EDITOR=vi
-export VISUAL=vi
+# export PS1="\n\t \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+# # ----------------------- environment variables ----------------------
+# export TZ=Asia/Ho_Chi_Minh
+# export EDITOR=vi
+# export VISUAL=vi
 
-## --vds--
-export VDS_HOME="$HOME/work"
-export CICD="$VDS_HOME/cicd"
-export APP_CONFIG="$VDS_HOME/app-config"
-export ARGOCD="$VDS_HOME/argo-cd"
-export BUILD="$VDS_HOME/build"
 ## config home
-export CONFIG_HOME="$HOME/.config"
+# export CONFIG_HOME="$HOME/.config"
 
-# ------------------------------ cdpath ------------------------------
-export CDPATH=".:$VDS_HOME:$DOTFILES:$SCRIPTS"
+# # ------------------------------ cdpath ------------------------------
+# export CDPATH=".:$DOTFILES:$SCRIPTS"
 
 
 # ------------------------------ aliases -----------------------------

@@ -39,8 +39,20 @@ function change_default_shell() {
   fi
 }
 
+function install_ubuntumono_nerd_font() {
+  mkdir -p ~/.local/share/fonts
+  cd ~/.local/share/fonts
+
+  wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/UbuntuMono.zip
+
+  unzip -o UbuntuMono.zip -d UbuntuMono
+  rm UbuntuMono.zip
+  fc-cache -fv
+}
+
 function main() {
   # install_dependencies
+  # install_ubuntumono_nerd_font
   install_stow_packages
   # install_starship
   # configure_fcitx5

@@ -1,0 +1,9 @@
+k9s:
+  refreshRate: 2
+  ui:
+    enableMouse: true
+    headless: false
+    noIcons: false
+  skipLatestRevCheck: false
+  disablePodCounting: false
+

@@ -7,16 +7,21 @@ This repository contains my personal dotfiles and setup scripts for configuring 
 ## 📁 Structure
 
 ```
-dot/
-├── bootstrap/
-│   ├── setup.sh             # Install dotfile configs (Zsh, tmux, fcitx5, etc.)
-│   └── install-devtools.sh    # Install developer tools (Docker, kubectl, VSCode, etc.)
-├── stow/
-│   ├── zsh/
-│   ├── git/
-│   ├── tmux/
-│   ├── starship/
-│   └── alacritty/
+dot
+├── bootstrap
+│   ├── install_devtools.sh
+│   └── setup.sh
+├── README.md
+└── stow
+    ├── alacritty
+    ├── bash
+    ├── git
+    ├── k9s
+    ├── starship
+    ├── tmux
+    ├── vim
+    ├── vscode
+    └── zsh
 ```
 
 ---
@@ -35,18 +40,7 @@ bash bootstrap/setup.sh
 
 ---
 
-
-### 2. Install CLI tools
-
-```bash
-bash bootstrap/install-cli-tools.sh
-```
-
-> Includes: Starship, tmux, alacritty, zsh, bat, eza, lazydocker
-
----
-
-### 3. Install development tools
+### 2. Install development tools
 
 ```bash
 bash bootstrap/install-devtools.sh
